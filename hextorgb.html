@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+HEX TO RGB
+</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+<style>
+body {
+background-attachment:fixed;
+font-family:'Lato',sans-serif;
+letter-spacing:5px;
+}
+#box {
+
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+width:25%;
+}
+input[type="text"] {
+width:100%;
+border:none;
+outline:none;
+font-family:'Lato',sans-serif;
+padding:10px;
+color:black;
+font-size:22px;
+border-bottom:1px solid black;
+letter-spacing:5px;
+border-radius:10px;
+
+
+}
+</style>
+</head>
+<body id="bg_body">
+<div id="box">
+<h2 id="heading">
+HEX to RGB
+</h2>
+<input type="text" id="hex_val" class="txtbox" placeholder="hex" maxlength="7"/>
+<br><br>
+<input type="text" id="rgb_val"  placeholder="rgb"/>
+
+</div>
+<script>
+console.log("Script Loaded...");
+var hex=document.getElementById("hex_val")
+var rgb=document.getElementById("rgb_val")
+var body=document.getElementById("bg_body")
+var txtbox=document.getElementsByClassName("txtbox");
+var heading=document.getElementById("heading");
+hex.addEventListener('input',function(e)
+{
+var string=e.target.value.slice(1);
+
+	
+	if(string.length==3) {
+		var r=string.slice(0,1);
+		var g=string.slice(1,2);
+		var b=string.slice(2);
+		var rgbExp="rgb("+(parseInt(r,16)*16+parseInt(r,16)*1)+","+(parseInt(g,16)*16+parseInt(g,16)*1)+","+(parseInt(b,16)*16+parseInt(b,16)*1)+")";
+		body.style.backgroundColor=rgbExp;
+		rgb.value=rgbExp;
+		
+		
+		
+	}	
+	if(string.length==6) {
+	var r=string.slice(0,2);
+	var g=string.slice(2,4);
+	var b=string.slice(4);
+	var rgbExp="rgb("+parseInt(r,16)+","+parseInt(g,16)+","+parseInt(b,16)+")";
+	body.style.backgroundColor=rgbExp;
+	rgb.value=rgbExp;
+	}
+	if(rgbExp==="rgb(0,0,0)")
+		{
+			heading.style.color="white";
+		}
+		else {
+			heading.style.color="black";
+		}
+	
+	
+	
+
+});
+</script>
+</body>
+</html>
